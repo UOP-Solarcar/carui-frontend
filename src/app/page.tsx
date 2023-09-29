@@ -6,19 +6,32 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Chart from "@/components/data-chart";
 import StatCard from "@/components/stat-card";
+import axios from "axios";
+
+async function fetcher(url: string): Promise<any> {
+	return new Promise<any>((resolve, reject) => {
+		axios.get(url).then((entry) => {
+			if (entry.status == 200) {
+				resolve(entry.data);
+			} else {
+				reject(new Error("Fuck"));
+			}
+		});
+	});
+}
 
 export default function Home() {
 	const [speed, setSpeed]: [number, Function] = useState(20);
 
-	/*
 	useEffect(() => {
 		setInterval(()=>{
-			setSpeed(speed + 1);
+			fetcher("https://api.github.com/repos/vercel/next.js").then((val) => {
+				console.log(val);
+			})
 		  }, 5000)
 
 		console.log(speed);
 	}, [speed]);
-	*/
 
 	return (
 		<>
