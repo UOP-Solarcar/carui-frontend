@@ -1,33 +1,32 @@
-'use client'
-import Link from "next/link";
-import { Nav, Navbar, NavDropdown, NavItem, NavLink } from "react-bootstrap";
+import { Button, Container, Form, Nav, NavDropdown, Navbar } from "react-bootstrap";
 
-export function Navigation() {
-	const handleSelect = (eventKey: any) => {};
-
+export default function Navigation() {
 	return (
 		<>
-			<Nav variant="pills" activeKey="1" onSelect={handleSelect}>
-				<Nav.Item>
-					<Link href="/" passHref legacyBehavior>
-						<Nav.Link eventKey="1">Home</Nav.Link>
-					</Link>
-				</Nav.Item>
-				<Nav.Item>
-					<Link href="#2" passHref legacyBehavior>
-						<Nav.Link eventKey="2" title="Item">
-							Sub Menu
-						</Nav.Link>
-					</Link>
-				</Nav.Item>
-				<NavDropdown title="More" id="nav-dropdown">
-					<NavDropdown.Item eventKey="4.1">Console</NavDropdown.Item>
-					<NavDropdown.Item eventKey="4.2">Log</NavDropdown.Item>
-					<NavDropdown.Item eventKey="4.3">Settings</NavDropdown.Item>
-					<NavDropdown.Divider />
-					<NavDropdown.Item eventKey="4.4">Debug</NavDropdown.Item>
-				</NavDropdown>
-			</Nav>
+			<Navbar variant="dark" bg="dark" expand="lg">
+				<Container fluid>
+					<Navbar.Brand href="#">UOP Solar Car: Watcher</Navbar.Brand>
+					<Navbar.Toggle aria-controls="navbarScroll"/>
+					<Navbar.Collapse id="navbarScroll">
+						<Nav
+							className="me-auto my-2 my-lg-0"
+							style={{ maxHeight: "100px" }}
+							navbarScroll
+						>
+							<Nav.Link href="/">Home</Nav.Link>
+						</Nav>
+						<Form className="d-flex" onSubmit={(e) => {e.preventDefault(); localStorage.setItem("ip_addr", e.target.ip_holder.value.toString()) }}>
+							<Form.Control
+								placeholder="IP Example: 127.0.0.1"
+								className="me-2"
+								aria-label="IP Address"
+								name="ip_holder"
+							/>
+							<Button variant="outline-success" type="submit">Connect</Button>
+						</Form>
+					</Navbar.Collapse>
+				</Container>
+			</Navbar>
 		</>
 	);
 }

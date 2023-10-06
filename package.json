@@ -1,5 +1,5 @@
 {
-  "name": "uop-sw-ui",
+  "name": "uop-sw-ui-rework",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,20 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/canvasjs": "^1.9.9",
     "axios": "^1.5.1",
     "bootstrap": "^5.3.2",
+    "canvasjs": "^1.8.3",
     "chart.js": "^4.4.0",
-    "jotai": "^2.4.3",
-    "next": "latest",
-    "react": "latest",
+    "next": "13.5.4",
+    "react": "^18",
     "react-bootstrap": "^2.9.0",
     "react-chartjs-2": "^5.2.0",
-    "react-dom": "latest"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "typescript": "latest"
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
   }
 }
